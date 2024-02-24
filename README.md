@@ -15,4 +15,4 @@ Para instalar este blog, sigue estos pasos:
 3. Ejecuta el siguiente comando para instalar las dependencias:
 
 ```bash
-php artisan install
+composer install
