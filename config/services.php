@@ -35,6 +35,12 @@ return [
         'base_uri' => env('NEWS_BASE_URI'),
         'apiKey' => env('NEWS_APIKEY'),
         'class' => App\Services\NewsService::class,
+    ],
+
+    'users' => [
+        'base_uri' => env('USER_BASE_URI'),
+        'class' => App\Services\UserService::class,
     ]
 
+    
 ];

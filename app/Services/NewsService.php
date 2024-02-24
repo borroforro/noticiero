@@ -33,13 +33,13 @@ class NewsService
         return "{$this->apiKey}";
     }
 
-    public function handleNews($pageSize = 10, $language = 'es')
+    public function handleNews($q = 'bitcoin',$pageSize = 10, $language = 'es')
     {
         return $this->makeRequest(
             'GET',
             '/v2/everything',
             [
-                'q' => 'bitcoin',
+                'q' => $q,
                 'sortBy' => 'popularity',
                 'pageSize' => $pageSize,
                 'language' => $language,
