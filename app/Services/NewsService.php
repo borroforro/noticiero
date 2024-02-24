@@ -14,13 +14,13 @@ class NewsService
 
     public function __construct()
     {
-        $this->baseUri = config('services.paypal.base_uri');
-        $this->apiKey = config('services.paypal.apiKey');
+        $this->baseUri = config('services.news.base_uri');
+        $this->apiKey = config('services.news.apiKey');
     }
 
     public function resolveAuthorization(&$queryParams, &$formParams, &$headers)
     {
-        $headers['apiKey'] = $this->resolveAccessToken();
+        $headers['X-Api-Key'] = $this->resolveAccessToken();
     }
 
     public function decodeResponse($response)
@@ -33,16 +33,16 @@ class NewsService
         return "{$this->apiKey}";
     }
 
-    public function handleNews(Request $request, $country = 'mx', $pageSize = 10)
+    public function handleNews($pageSize = 10, $language = 'es')
     {
         return $this->makeRequest(
-            'POST',
+            'GET',
             '/v2/everything',
-            [],
             [
-                'country' => $country,
+                'q' => 'bitcoin',
                 'sortBy' => 'popularity',
-                'pageSize' => $pageSize
+                'pageSize' => $pageSize,
+                'language' => $language,
             ],
         );
     }
